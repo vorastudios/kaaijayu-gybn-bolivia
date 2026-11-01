@@ -13,7 +13,7 @@
   --sol: #F37225;
   --maiz: #F7AD2D;
 
-  --fuente-titulo: "Fraunces", serif;
+  --fuente-titulo: "Lora", serif;
   --fuente-texto: "DM Sans", sans-serif;
   --fuente-mono: "IBM Plex Mono", monospace;
   --titulo-1: clamp(40px, calc(28px + 3.2vw), 72px);

@@ -76,7 +76,7 @@ button {
 h1,
 h2 {
   font-family: var(--fuente-titulo);
-  font-weight: 300;
+  font-weight: 600;
   font-optical-sizing: auto;
   line-height: 1.15;
 }
@@ -168,7 +168,7 @@ h3,
   border-radius: 999px;
   background: var(--verde-texto);
   color: var(--blanco);
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -235,7 +235,7 @@ h3,
   align-items: flex-start;
   gap: 24px;
   font-family: var(--fuente-texto);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 28px;
 }
 
@@ -383,10 +383,14 @@ main {
   margin-block: 24px;
 }
 
-.hero h1 em,
+.hero h1 em {
+  font-family: var(--fuente-titulo);
+  font-weight: 600;
+}
+
 .proposito em {
   font-family: var(--fuente-titulo);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .hero-subtitulo {
@@ -456,9 +460,9 @@ main {
 }
 
 .gybn-logo-nombre {
-  font-family: var(--fuente-texto);
+  font-family: var(--fuente-titulo);
   font-size: 26px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.2;
   color: var(--tinta);
@@ -489,7 +493,7 @@ main {
   margin: 0;
   font-family: var(--fuente-titulo);
   font-size: 26px;
-  font-weight: 300;
+  font-weight: 600;
   line-height: 1.3;
 }
 
@@ -512,7 +516,7 @@ main {
   margin: 24px 0 0;
   font-family: var(--fuente-titulo);
   font-size: 26px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.4;
 }
 
@@ -614,7 +618,7 @@ main {
   opacity: .4;
   font-family: var(--fuente-titulo);
   font-size: 112px;
-  font-weight: 300;
+  font-weight: 600;
   line-height: 1;
 }
 
@@ -622,7 +626,7 @@ main {
   max-width: 42ch;
   font-family: var(--fuente-titulo);
   font-size: 26px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.5;
 }
 
@@ -667,7 +671,7 @@ main {
   margin: 24px 0 0;
   font-family: var(--fuente-titulo);
   font-size: 26px;
-  font-weight: 300;
+  font-weight: 600;
   line-height: 1.3;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1282,10 +1286,8 @@ body.visor-abierto {
   .galeria-miniatura:hover { transform: none; }
 }
 
-/* El nombre «Kaaijayu GYBN Bolivia» va en DM Sans, no en Fraunces:
-   la «j» de Fraunces es demasiado decorativa (pedido de Matías, 2026-11-01). */
-.nombre-marca {
-  font-family: var(--fuente-texto);
-  font-weight: 400;
-  letter-spacing: -0.02em;
+/* Tipografía (pedido de Matías, 2026-11-01): títulos Lora 600, texto DM Sans 400,
+   menú y botones DM Sans 600. El nombre sigue a los títulos: la «j» de Lora es normal. */
+.navegacion-escritorio a {
+  font-weight: 600;
 }
