@@ -419,6 +419,53 @@ main {
   text-transform: none;
 }
 
+/* T9: las fuentes y la entrada no alteran el flujo ni bloquean controles. */
+.js:not(.fuentes-listas) #inicio .hero-contenido,
+.js:not(.fuentes-listas) #inicio .hero-desliza,
+.js:not(.fuentes-listas) #inicio .hero-fondo,
+.js:not(.fuentes-listas) #encabezado {
+  opacity: 0;
+}
+
+.hero-palabra-recorte {
+  display: inline-block;
+  overflow: clip;
+  /* Compensa el espacio de protección sin cambiar líneas ni altura. */
+  padding: .12em .06em .25em;
+  margin: -.12em -.06em -.25em;
+  vertical-align: baseline;
+}
+
+.hero-palabra {
+  display: inline-block;
+}
+
+.js.hero-animando .hero-entrada {
+  transition-property: transform, opacity, filter;
+  transition-duration: var(--entrada-duracion);
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  transition-delay: var(--retraso, 0ms);
+  will-change: transform, opacity;
+}
+
+.js:not(.hero-iniciado) .hero-entrada {
+  opacity: 0;
+  transform: translateY(var(--entrada-y, 0px));
+}
+
+.js:not(.hero-iniciado) #inicio .hero-fondo {
+  filter: blur(12px);
+}
+
+.js:not(.hero-iniciado) #inicio em .hero-palabra {
+  filter: blur(6px);
+}
+
+.js.hero-animando #inicio .hero-fondo,
+.js.hero-animando #inicio em .hero-palabra {
+  will-change: opacity, filter, transform;
+}
+
 .seccion-superior {
   padding-block: 104px;
 }
@@ -1259,8 +1306,25 @@ body.visor-abierto {
     transition: none;
   }
 
-  .hero-desliza {
-    display: none;
+  .js.hero-animando .hero-entrada {
+    transition-property: opacity;
+    transition-duration: 200ms;
+    transition-delay: 0ms;
+    will-change: opacity;
+  }
+
+  .js:not(.hero-iniciado) .hero-entrada {
+    transform: none;
+  }
+
+  .js:not(.hero-iniciado) #inicio .hero-fondo,
+  .js:not(.hero-iniciado) #inicio em .hero-palabra {
+    filter: none;
+  }
+
+  .js.hero-animando #inicio .hero-fondo,
+  .js.hero-animando #inicio em .hero-palabra {
+    will-change: opacity;
   }
 
   [data-aparece].aparece-listo {

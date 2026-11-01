@@ -11,6 +11,76 @@ const movimientoReducido = window.matchMedia("(prefers-reduced-motion: reduce)")
 let actualizacionPendiente = false;
 let posicionGuardada = 0;
 
+// Entrada única: conserva los nodos <br>/<em> y los espacios entre palabras.
+function prepararEntradaHero() {
+  const raiz = document.documentElement;
+  const hero = document.querySelector("#inicio");
+  const titulo = hero.querySelector("h1");
+  const textoCompleto = titulo.cloneNode(true);
+  textoCompleto.querySelectorAll("br").forEach((salto) => salto.replaceWith(" "));
+  titulo.setAttribute("aria-label", textoCompleto.textContent.replace(/\s+/g, " ").trim());
+
+  const nodosTexto = [];
+  const recorrido = document.createTreeWalker(titulo, NodeFilter.SHOW_TEXT);
+  while (recorrido.nextNode()) nodosTexto.push(recorrido.currentNode);
+  let indice = 0;
+  nodosTexto.forEach((nodo) => {
+    const fragmento = document.createDocumentFragment();
+    nodo.textContent.split(/(\s+)/).forEach((texto) => {
+      if (!texto) return;
+      if (/^\s+$/.test(texto)) {
+        fragmento.append(document.createTextNode(texto));
+        return;
+      }
+      const recorte = document.createElement("span");
+      recorte.className = "hero-palabra-recorte";
+      recorte.setAttribute("aria-hidden", "true");
+      const palabra = document.createElement("span");
+      palabra.className = "hero-palabra";
+      palabra.setAttribute("aria-hidden", "true");
+      palabra.textContent = texto;
+      palabra.style.setProperty("--retraso", `${200 + indice++ * 45}ms`);
+      recorte.append(palabra);
+      fragmento.append(recorte);
+    });
+    nodo.replaceWith(fragmento);
+  });
+
+  const elementos = [
+    [hero.querySelector(".hero-fondo"), 0, 900, "0px"],
+    [encabezado, 0, 500, "-8px"],
+    [hero.querySelector(".hero-contenido > .etiqueta"), 120, 500, "8px"],
+    ...Array.from(titulo.querySelectorAll(".hero-palabra"), (palabra) =>
+      [palabra, null, 700, "105%"]),
+    [hero.querySelector(".hero-subtitulo"), 650, 600, "12px"],
+    ...Array.from(hero.querySelectorAll(".hero-enlaces > a"), (enlace, i) =>
+      [enlace, 800 + i * 60, 500, "12px"]),
+    // 800 + 600 = 1400 ms: respeta el máximo total de la entrada.
+    [hero.querySelector(".hero-desliza"), 800, 600, "0px"],
+  ].map(([elemento, retraso, duracion, desplazamiento]) => {
+    elemento.classList.add("hero-entrada");
+    if (retraso !== null) elemento.style.setProperty("--retraso", `${retraso}ms`);
+    elemento.style.setProperty("--entrada-duracion", `${duracion}ms`);
+    elemento.style.setProperty("--entrada-y", desplazamiento);
+    return elemento;
+  });
+
+  raiz.classList.add("hero-animando");
+  const espera = (ms) => new Promise((resolver) => window.setTimeout(resolver, ms));
+  Promise.race([document.fonts.ready, espera(1200)]).then(() => {
+    raiz.classList.add("fuentes-listas");
+    // Dos frames aseguran que el navegador haya pintado el estado inicial.
+    window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
+      raiz.classList.add("hero-iniciado");
+      const transiciones = elementos.flatMap((elemento) =>
+        elemento.getAnimations().map((animacion) => animacion.finished));
+      Promise.allSettled(transiciones).then(() => raiz.classList.remove("hero-animando"));
+    }));
+  });
+}
+
+prepararEntradaHero();
+
 function actualizarEncabezado() {
   const posicion = menu.hidden ? window.scrollY : posicionGuardada;
   encabezado.classList.toggle("con-scroll", posicion > 24);
@@ -148,14 +218,7 @@ function prepararApariciones() {
       .filter((hermano) => hermano.matches("[data-aparece]"));
     elemento.style.setProperty("--aparece-retraso", `${Math.min(hermanos.indexOf(elemento), 2) * 40}ms`);
     elemento.classList.add("aparece-listo");
-    if (elemento.closest(".hero")) {
-      // Se inicia al cargar, sin depender del umbral del observador.
-      window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
-        elemento.classList.add("visible");
-      }));
-    } else {
-      observadorApariciones.observe(elemento);
-    }
+    observadorApariciones.observe(elemento);
   });
 }
 
