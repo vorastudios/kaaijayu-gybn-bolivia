@@ -1,0 +1,84 @@
+:root {
+  --blanco: #FFFFFF;
+  --niebla: #F7F8F5;
+  --linea: #E4E8E1;
+  --tinta: #1E2A24;
+  --tinta-2: #5B6760;
+  --verde: #14964B;
+  --verde-texto: #0F7A3D;
+  --brote: #8CC63D;
+  --agua: #0E92C8;
+  --cielo: #72CDEA;
+  --morado: #66348E;
+  --sol: #F37225;
+  --maiz: #F7AD2D;
+
+  --fuente-titulo: "Fraunces", serif;
+  --fuente-texto: "DM Sans", sans-serif;
+  --fuente-mono: "IBM Plex Mono", monospace;
+  --titulo-1: clamp(40px, calc(28px + 3.2vw), 72px);
+  --titulo-2: clamp(30px, calc(24.75px + 1.4vw), 44px);
+  --texto: clamp(16px, calc(15.625px + 0.1vw), 17px);
+  --radio-12: 12px;
+  --radio-24: 24px;
+  --sombra-suave: 0 8px 40px rgb(30 42 36 / .06);
+  --curva-ui: cubic-bezier(0.23, 1, 0.32, 1);
+  --duracion-presion: 140ms;
+  --duracion-ui: 200ms;
+  --duracion-entrada: 280ms;
+}
+
+.vidrio {
+  background: color-mix(in srgb, var(--blanco) 72%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  backdrop-filter: blur(18px) saturate(1.2);
+  border: 1px solid rgb(255 255 255 / .8);
+  box-shadow: var(--sombra-suave);
+  border-radius: var(--radio-24);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .vidrio {
+    background: var(--blanco);
+  }
+}
+
+/* Usar de tres a cuatro manchas decorativas por pantalla, fuera del flujo. */
+.aurora {
+  position: absolute;
+  width: clamp(400px, 42vw, 600px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--brote);
+  opacity: .25;
+  filter: blur(90px);
+  pointer-events: none;
+  /* El difuminado fuerte permanece estático: no se anima una capa de 90 px. */
+}
+
+/* El color va por modificador, no por posición: .aurora.aurora--cielo */
+.aurora--brote { background: var(--brote); }
+.aurora--cielo { background: var(--cielo); }
+.aurora--morado { background: var(--morado); }
+.aurora--sol { background: var(--sol); }
+.aurora--verde { background: var(--verde); }
+.aurora--agua { background: var(--agua); }
+
+.etiqueta {
+  font-family: var(--fuente-mono);
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+
+@media (width < 860px) {
+  .aurora {
+    width: 300px;
+  }
+
+  .aurora--opcional {
+    display: none;
+  }
+}
+

@@ -1,0 +1,24 @@
+{
+  "name": "animacion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preview": "remotion studio",
+    "render": "remotion render Anillo out/anillo.mp4 && remotion render AnilloVertical out/anillo-vertical.mp4 && remotion render AnilloWeb out/anillo-web.mp4 --crf=16",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@remotion/cli": "^4.0.539",
+    "@remotion/google-fonts": "^4.0.539",
+    "@types/react": "^18.3.31",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.539",
+    "typescript": "^7.0.2"
+  }
+}

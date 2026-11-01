@@ -1,0 +1,50 @@
+[
+  {
+    "titulo": "Festival de Polinizadores",
+    "fecha": "",
+    "resumen": "Concurso de disfraces de polinizadores nativos en el Jardín Botánico Martín Cárdenas.",
+    "foto": "assets/fotos/web/act-01-600.webp",
+    "enlace": "https://www.facebook.com/KaaijayuGYBNBolivia",
+    "verificar": true
+  },
+  {
+    "titulo": "1er Congreso Boliviano de Agroecología",
+    "fecha": "14 al 17 de octubre de 2026",
+    "resumen": "En la Facultad de Ciencias Agrícolas, Pecuarias y Forestales, UMSS, Cochabamba: sistema alimentario sostenible.",
+    "foto": "assets/fotos/web/act-02-600.webp",
+    "enlace": "https://www.facebook.com/KaaijayuGYBNBolivia",
+    "verificar": true
+  },
+  {
+    "titulo": "Día Internacional de la Juventud — 12 de agosto",
+    "fecha": "",
+    "resumen": "Celebración del Día Internacional de la Juventud.",
+    "foto": "assets/fotos/web/act-03-600.webp",
+    "enlace": "https://www.facebook.com/KaaijayuGYBNBolivia",
+    "verificar": true
+  },
+  {
+    "titulo": "Inauguración del Centro de Educación Ambiental Ecolab Atuq",
+    "fecha": "",
+    "resumen": "Inauguración de un espacio de educación ambiental en el Jardín Botánico Martín Cárdenas, Cochabamba.",
+    "foto": "assets/fotos/web/act-04-600.webp",
+    "enlace": "https://www.facebook.com/KaaijayuGYBNBolivia",
+    "verificar": true
+  },
+  {
+    "titulo": "Cultivando transformaciones colectivas",
+    "fecha": "29 de agosto de 2026 · 13:30 UTC",
+    "resumen": "Sesión 4: Acción Colectiva. Reunión online gratuita, con apoyo lingüístico en español.",
+    "foto": "assets/fotos/web/act-05-600.webp",
+    "enlace": "https://www.facebook.com/KaaijayuGYBNBolivia",
+    "verificar": true
+  },
+  {
+    "titulo": "Voces de la tierra, datos del cielo",
+    "fecha": "",
+    "resumen": "Diálogo de saberes y tecnología comunitaria con mujeres indígenas chiquitanas frente a los incendios.",
+    "foto": "assets/fotos/web/act-06-600.webp",
+    "enlace": "https://www.facebook.com/KaaijayuGYBNBolivia",
+    "verificar": true
+  }
+]

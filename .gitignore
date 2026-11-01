@@ -1,0 +1,11 @@
+# Solo se publica el sitio
+codex/
+PLANOS.md
+assets/fotos/originales/
+animacion/node_modules/
+animacion/out/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+.impeccable/
